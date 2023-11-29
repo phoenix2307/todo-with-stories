@@ -1,7 +1,8 @@
 import TextField from '@mui/material/TextField/TextField';
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import React from 'react';
 import {IconButton} from "@mui/material";
 import {AddBox} from "@mui/icons-material";
+import {useAddItem} from "./hooks/useAddItem";
 
 
 export type AddItemFormPropsType = {
@@ -10,6 +11,9 @@ export type AddItemFormPropsType = {
 
 export const AddItemForm = React.memo( (props: AddItemFormPropsType) => {
 
+    const {title, error, onChangeHandler, onKeyPressHandler, addItem} = useAddItem(props.addItem)
+
+/*
     let [title, setTitle] = useState("")
     let [error, setError] = useState<string | null>(null)
 
@@ -33,7 +37,7 @@ export const AddItemForm = React.memo( (props: AddItemFormPropsType) => {
         if (e.charCode === 13) {
             addItem();
         }
-    }
+    }*/
 
     return <div>
         <TextField variant="outlined"
