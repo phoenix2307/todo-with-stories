@@ -47,12 +47,25 @@ export function useTasks() {
         }
     }
 
+    function removeTaskForTodolist(id: string) {
+        delete tasks[id];
+        setTasks({...tasks});
+    }
+
+    function addTaskForNewTodolist(newTodolistId: string) {
+        setTasks({
+            ...tasks,
+            [newTodolistId]: []
+        })
+    }
+
     return {
         tasks,
-        setTasks,
         removeTask,
         addTask,
         changeStatus,
-        changeTaskTitle
+        changeTaskTitle,
+        removeTaskForTodolist,
+        addTaskForNewTodolist
     }
 }

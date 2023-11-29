@@ -1,14 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../App.css';
 import {TaskType, Todolist} from '../components/Todolist';
-import {v1} from 'uuid';
 import {AddItemForm} from '../components/AddItemForm';
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@mui/material";
 import {Menu} from "@mui/icons-material";
-import {todolistId1, todolistId2} from "./id-utils";
 import {useTodoLists} from "./hooks/useTodolists";
 import {useTasks} from "./hooks/useTasks";
-
 
 export type FilterValuesType = "all" | "active" | "completed";
 export type TodolistType = {
@@ -23,21 +20,15 @@ export type TasksStateType = {
 function App() {
 
     const {
-        tasks,
-        setTasks,
-        removeTask,
-        addTask,
-        changeStatus,
-        changeTaskTitle
+        tasks, removeTask, addTask,
+        changeStatus, changeTaskTitle,
+        removeTaskForTodolist, addTaskForNewTodolist
     } = useTasks()
 
     const {
-        todolists,
-        changeFilter,
-        changeTodolistTitle,
-        removeTodolist,
-        addTodolist
-    } = useTodoLists(tasks, setTasks)
+        todolists, changeFilter, changeTodolistTitle,
+        removeTodolist, addTodolist
+    } = useTodoLists(removeTaskForTodolist, addTaskForNewTodolist)
 
     return (
         <div className="App">
