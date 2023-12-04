@@ -35,17 +35,23 @@ type GetResponseType = {
     error: string
 }
 
+type OtherResponseType<D ={}> = {
+    data: D,
+    resultCode: number
+    messages: string[]
+}
+
 export const taskAPI = {
     getTasks(todolistId: string) {
         return instance.get<GetResponseType>(`${todolistId}/tasks`)
     },
-   /* postTask(title: string) {
-        return axios.post('https://social-network.samuraijs.com/api/1.1/todo-lists', {title: title}, settings)
+    postTask(todolistId: string, title: string) {
+        return instance.post<OtherResponseType>(`${todolistId}/tasks`,{title})
     },
-    putTask(id: string, title: string) {
-        return axios.put(`https://social-network.samuraijs.com/api/1.1/todo-lists/${id}`, {title: title}, settings)
+    putTask(todolistId: string, taskId: string, title: string) {
+        return instance.put<OtherResponseType>(`${todolistId}/tasks/${taskId}`, {title})
     },
-    deleteTask(id: string) {
-        return axios.delete(`https://social-network.samuraijs.com/api/1.1/todo-lists/${id}`, settings)
-    }*/
+    deleteTask(todolistId: string, taskId: string) {
+        return axios.delete<OtherResponseType>(`${todolistId}/tasks/${taskId}`)
+    }
 }
