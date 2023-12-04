@@ -10,7 +10,7 @@ export default {
 const settings = {
     withCredentials: true,
     headers: {
-        "API-KEY": "bb48aa7f-70bd-4234-ba50-496c58e3a23c"
+        "API-KEY": "8d201fb1-33ed-4ec9-a013-6de2e03bc35f"
     }
 }
 
