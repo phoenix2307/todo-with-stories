@@ -10,7 +10,6 @@ import axios from "axios";
 export type TaskType = {
     description: string
     title: string
-    completed: boolean
     status: number
     priority: number
     startDate: string
@@ -35,7 +34,16 @@ type GetResponseType = {
     error: string
 }
 
-type OtherResponseType<D ={}> = {
+export type UpdateTaskType = {
+    title: string
+    description: string
+    status: number
+    priority: number
+    startDate: string
+    deadline: string
+}
+
+type OtherResponseType<D = {}> = {
     data: D,
     resultCode: number
     messages: string[]
@@ -46,12 +54,12 @@ export const taskAPI = {
         return instance.get<GetResponseType>(`${todolistId}/tasks`)
     },
     postTask(todolistId: string, title: string) {
-        return instance.post<OtherResponseType>(`${todolistId}/tasks`,{title})
+        return instance.post<OtherResponseType<{ item: TaskType }>>(`${todolistId}/tasks`, {title})
     },
-    putTask(todolistId: string, taskId: string, title: string) {
-        return instance.put<OtherResponseType>(`${todolistId}/tasks/${taskId}`, {title})
+    putTask(todolistId: string, taskId: string, updateModel: UpdateTaskType) {
+        return instance.put<OtherResponseType<{ item: TaskType }>>(`${todolistId}/tasks/${taskId}`, {title: updateModel.title})
     },
     deleteTask(todolistId: string, taskId: string) {
-        return axios.delete<OtherResponseType>(`${todolistId}/tasks/${taskId}`)
+        return instance.delete<OtherResponseType>(`${todolistId}/tasks/${taskId}`)
     }
 }
