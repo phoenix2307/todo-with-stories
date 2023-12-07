@@ -6,12 +6,12 @@ export default {
     tags: ['autodocs'],
 }
 
-const settings = {
+/*const settings = {
     withCredentials: true,
     headers: {
         "API-KEY": "8d201fb1-33ed-4ec9-a013-6de2e03bc35f"
     }
-}
+}*/
 
 export const GetTodolists = () => {
     const [state, setState] = useState<any>(null)
@@ -29,7 +29,6 @@ export const CreateTodolist = () => {
     useEffect(() => {
         todolistsAPI.postTodolist('Someone')
             .then((res) => {
-                // debugger
                 setState(res.data)
             })
     }, [])
@@ -40,9 +39,8 @@ export const UpdateTodolistTitle = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
         const todolistId = 'f84a0f25-a695-4032-8fda-2deda18c4e85'
-        todolistsAPI.putTodolist(todolistId, 'Some updated')
+        todolistsAPI.putTodolist(todolistId, 'AAAA some AAAA')
             .then((res) => {
-                // debugger
                 setState(res.data)
             })
     }, [])
@@ -52,7 +50,7 @@ export const UpdateTodolistTitle = () => {
 export const DeleteTodolist = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        const todolistId = '6bb7370b-3b3c-4e98-862f-d9196242c664'
+        const todolistId = '6270196e-6c92-40de-b0fb-c42c46eec0be'
         todolistsAPI.deleteTodolist(todolistId)
             .then((res) => {
                 setState(res.data)
