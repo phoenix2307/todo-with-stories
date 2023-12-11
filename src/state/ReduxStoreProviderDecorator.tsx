@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
     todolists: todolistsReducer
 })
 
-const initialGlobalState = {
+/*const initialGlobalState = {
     todolists: [
         {id: "todolistId1", title: "What to learn", filter: "all"},
         {id: "todolistId2", title: "What to buy", filter: "all"}
@@ -24,6 +24,39 @@ const initialGlobalState = {
         ["todolistId2"]: [
             {id: v1(), title: "Milk", isDone: false},
             {id: v1(), title: "React Book", isDone: true}
+        ]
+    }
+};*/
+
+const initialGlobalState = {
+    todolists: [
+        {id: 'todolistId1', title: "What to learn", filter: "all", addedDate: '', order: 0},
+        {id: 'todolistId2', title: "What to buy", filter: "all", addedDate: '', order: 0}
+    ] ,
+    tasks: {
+        ["todolistId1"]: [
+            {
+                description: '', title: "HTML&CSS", status: 2,
+                priority: 0, startDate: '', deadline: '',
+                id: v1(), todoListId: "todolistId1", order: 0, addedDate: ''
+            },
+            {
+                description: '', title: "JS", status: 0,
+                priority: 0, startDate: '', deadline: '',
+                id: v1(), todoListId: "todolistId1", order: 0, addedDate: ''
+            }
+        ],
+        ["todolistId2"]: [
+            {
+                description: '', title: "Milk", status: 0,
+                priority: 0, startDate: '', deadline: '',
+                id: v1(), todoListId: "todolistId2", order: 0, addedDate: ''
+            },
+            {
+                description: '', title: "Book", status: 2,
+                priority: 0, startDate: '', deadline: '',
+                id: v1(), todoListId: "todolistId2", order: 0, addedDate: ''
+            }
         ]
     }
 };
